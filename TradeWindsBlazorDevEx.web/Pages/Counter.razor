@@ -3,7 +3,7 @@
 @code
 {
 	[CascadingParameter]
-	protected ExPopupMessageBox PopupMessageBox { get; set; } = default!;
+	protected PopupMessageBox PopupMessageBox { get; set; } = default!;
 }
 
 <PageTitle>Counter</PageTitle>
@@ -20,12 +20,14 @@
 	private void IncrementCount()
 	{
 		currentCount++;
-		PopupMessageBox.ShowAsync("Counter", $"Current count: {currentCount}. Reset to 0?", null, OnClick, null, ExPopupMessageBox.ButtonYes, ExPopupMessageBox.ButtonNo);
+		PopupMessageBox.ShowAsync("Counter", 
+			$"Current count: {currentCount}. Reset to 0?", 
+			null, OnClick, null, PopupMessageBox.ButtonYes, PopupMessageBox.ButtonNo);
 	}
 
 	private Task OnClick(string buttonText, object? tag)
 	{
-		if (buttonText == ExPopupMessageBox.ButtonYes)
+		if (buttonText == PopupMessageBox.ButtonYes)
 		{
 			currentCount = 0;
 			StateHasChanged();
