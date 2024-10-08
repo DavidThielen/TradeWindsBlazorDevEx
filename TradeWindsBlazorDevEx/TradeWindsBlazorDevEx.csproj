@@ -5,7 +5,35 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<Version>1.0.1.0</Version>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Title>DevEx Blazor library Add-Ons</Title>
+		<Authors>DavidThielen</Authors>
+		<Company>Trade Winds Studios</Company>
+		<Description>Several useful Blazor components built using the DevEx Blazor library</Description>
+		<Copyright>MIT</Copyright>
+		<PackageProjectUrl>https://github.com/DavidThielen/TradeWindsBlazorDevEx</PackageProjectUrl>
+		<PackageIcon>element_into_input.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<RepositoryUrl>https://github.com/DavidThielen/TradeWindsBlazorDevEx</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>MessageBox, Phone Number</PackageTags>
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Include="..\element_into_input.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	  <None Include="..\LICENSE.txt">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	  <None Include="..\README.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
 
 	<ItemGroup>
 		<SupportedPlatform Include="browser" />
