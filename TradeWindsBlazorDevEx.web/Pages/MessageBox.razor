@@ -1,0 +1,45 @@
+﻿@page "/messagebox"
+
+@code
+{
+	[CascadingParameter]
+	protected PopupMessageBox PopupMessageBox { get; set; } = default!;
+}
+
+<PageTitle>Popup MessageBox</PageTitle>
+
+<h1>MessageBox Returns</h1>
+
+<p role="status">Synchronous MessageBox returned: @_syncResult</p>
+
+<p role="status">Async MessageBox returned: @_asyncResult</p>
+
+<button class="btn btn-primary" @onclick="SyncClick">Synchronous MessageBox</button>
+
+<button class="btn btn-primary" @onclick="AsyncClick">Async MessageBox</button>
+
+@code {
+	private string? _syncResult;
+	private string? _asyncResult;
+
+	private async Task SyncClick()
+	{
+		_syncResult = await PopupMessageBox.Show("Synchronous", 
+			"This MessageBox is synchronous. The code calling this will not continue until you click yes or no.", PopupMessageBox.ButtonYes, PopupMessageBox.ButtonNo);
+		StateHasChanged();
+	}
+
+	private async Task AsyncClick()
+	{
+		await PopupMessageBox.ShowAsync("Async", 
+			"This MessageBox is async. The underlying code calling this is continuing to execute.", 
+			null, OnClick, null, PopupMessageBox.ButtonYes, PopupMessageBox.ButtonNo);
+	}
+
+	private Task OnClick(string buttonText, object? tag)
+	{
+		_asyncResult = buttonText;
+		StateHasChanged();
+		return Task.CompletedTask;
+	}
+}

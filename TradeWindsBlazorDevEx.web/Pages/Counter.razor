@@ -1,11 +1,5 @@
 ﻿@page "/counter"
 
-@code
-{
-	[CascadingParameter]
-	protected PopupMessageBox PopupMessageBox { get; set; } = default!;
-}
-
 <PageTitle>Counter</PageTitle>
 
 <h1>Counter</h1>
@@ -20,18 +14,5 @@
 	private void IncrementCount()
 	{
 		currentCount++;
-		PopupMessageBox.ShowAsync("Counter", 
-			$"Current count: {currentCount}. Reset to 0?", 
-			null, OnClick, null, PopupMessageBox.ButtonYes, PopupMessageBox.ButtonNo);
-	}
-
-	private Task OnClick(string buttonText, object? tag)
-	{
-		if (buttonText == PopupMessageBox.ButtonYes)
-		{
-			currentCount = 0;
-			StateHasChanged();
-		}
-		return Task.CompletedTask;
 	}
 }

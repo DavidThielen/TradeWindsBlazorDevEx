@@ -1,0 +1,30 @@
+﻿@page "/phonenumber"
+@using TradeWindsBlazorDevEx.PageModels
+
+
+<PageTitle>Phone Number</PageTitle>
+
+<h2>Enter a phone number:</h2>
+<p>
+	<ExPhoneNumber @bind-Value="@_model"/>
+</p>
+
+<h2>Get the phone number:</h2>
+<button class="btn btn-primary" @onclick="OnClick">Get phone number</button>
+
+<p role="status">Formatted number: @_formattedNumber</p>
+
+<p role="status">E-164 number: @_e164Number</p>
+
+@code {
+	private PhoneNumberPageModel _model = new PhoneNumberPageModel();
+	private string? _formattedNumber;
+	private string? _e164Number;
+
+	private async Task OnClick()
+	{
+		_formattedNumber = _model.FormattedNumber;
+		_e164Number = _model.E164;
+		StateHasChanged();
+	}
+}
